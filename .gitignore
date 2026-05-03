@@ -1,0 +1,9 @@
+cat > .gitignore << 'EOF'
+node_modules/
+.env
+.idea/
+coverage/
+load/*.json
+load/*.html
+.DS_Store
+EOF

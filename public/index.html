@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LMS Assignment Manager</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 30px auto;
+      background: #f5f6fa;
+      color: #1f2937;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form, .assignment-card {
+      background: white;
+      padding: 16px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    input, textarea, select, button {
+      display: block;
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px;
+      box-sizing: border-box;
+      border-radius: 5px;
+      border: 1px solid #cbd5e1;
+    }
+
+    button {
+      cursor: pointer;
+      background: #2563eb;
+      color: white;
+      border: none;
+      font-weight: bold;
+    }
+
+    .delete-btn {
+      background: #dc2626;
+    }
+
+    .edit-btn {
+      background: #16a34a;
+    }
+
+    #message {
+      margin: 12px 0;
+      font-weight: bold;
+      color: #2563eb;
+    }
+  </style>
+</head>
+<body>
+  <h1 data-cy="page-title">LMS Assignment Manager</h1>
+
+  <form id="assignmentForm" data-cy="assignment-form">
+    <input type="hidden" id="assignmentId" />
+
+    <input data-cy="title-input" id="title" placeholder="Assignment title" />
+    <input data-cy="course-input" id="course" placeholder="Course name" />
+    <textarea data-cy="description-input" id="description" placeholder="Description"></textarea>
+    <input data-cy="deadline-input" id="deadline" type="date" />
+
+    <select data-cy="status-select" id="status">
+      <option value="">Select status</option>
+      <option value="Draft">Draft</option>
+      <option value="Published">Published</option>
+      <option value="Closed">Closed</option>
+    </select>
+
+    <button data-cy="submit-btn" type="submit">Save Assignment</button>
+  </form>
+
+  <div id="message" data-cy="message"></div>
+
+  <h2>Assignments</h2>
+  <div id="assignmentsList" data-cy="assignments-list"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

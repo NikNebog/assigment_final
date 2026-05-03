@@ -1,0 +1,40 @@
+{
+  "name": "lms-assignment-testing",
+  "version": "1.0.0",
+  "description": "LMS Assignment CRUD application with Jest, SuperTest, Cypress and Artillery testing",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "start:3000": "cross-env PORT=3000 node src/server.js",
+    "start:4000": "cross-env PORT=4000 node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "load:test": "artillery run load/artillery.yml",
+    "load:test:4000": "artillery run load/artillery-4000.yml"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.19.2",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "artillery": "^2.0.23",
+    "cross-env": "^10.1.0",
+    "cypress": "^13.17.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.9",
+    "supertest": "^7.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/server.js",
+      "!src/assignmentModel.js"
+    ]
+  }
+}

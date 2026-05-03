@@ -1,0 +1,80 @@
+### Get all assignments
+GET http://localhost:3000/api/assignments
+
+### Get all assignments from host 4000
+GET http://localhost:4000/api/assignments
+
+> {%
+client.test("GET all assignments returns 200", function() {
+  client.assert(response.status === 200, "Expected status 200");
+});
+%}
+
+### Get assignment by id
+GET http://localhost:3000/api/assignments/1
+
+> {%
+client.test("GET assignment by id returns 200 or 404", function() {
+  client.assert(response.status === 200 || response.status === 404, "Expected 200 or 404");
+});
+%}
+
+### Create assignment
+POST http://localhost:3000/api/assignments
+Content-Type: application/json
+
+{
+  "title": "Cypress E2E Testing",
+  "course": "Software Testing",
+  "description": "Create E2E tests for the frontend.",
+  "deadline": "2026-05-25",
+  "status": "Published"
+}
+
+> {%
+client.test("POST assignment returns 201", function() {
+  client.assert(response.status === 201, "Expected status 201");
+});
+%}
+
+### Create invalid assignment
+POST http://localhost:3000/api/assignments
+Content-Type: application/json
+
+{
+  "title": "Invalid"
+}
+
+> {%
+client.test("POST invalid assignment returns 400", function() {
+  client.assert(response.status === 400, "Expected status 400");
+});
+%}
+
+### Update assignment
+PUT http://localhost:3000/api/assignments/1
+Content-Type: application/json
+
+{
+  "title": "Updated Assignment",
+  "course": "Software Testing",
+  "description": "Updated assignment description.",
+  "deadline": "2026-05-30",
+  "status": "Closed"
+}
+
+> {%
+client.test("PUT assignment returns 200 or 404", function() {
+  client.assert(response.status === 200 || response.status === 404, "Expected 200 or 404");
+});
+%}
+
+### Delete assignment
+DELETE http://localhost:3000/api/assignments/1
+
+> {%
+client.test("DELETE assignment returns 200 or 404", function() {
+  client.assert(response.status === 200 || response.status === 404, "Expected 200 or 404");
+});
+%}
+

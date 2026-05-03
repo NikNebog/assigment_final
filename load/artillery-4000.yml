@@ -1,0 +1,26 @@
+config:
+  target: "http://localhost:4000"
+  phases:
+    - duration: 30
+      arrivalRate: 5
+      name: "Warm-up phase"
+    - duration: 60
+      arrivalRate: 10
+      name: "Normal load phase"
+    - duration: 30
+      arrivalRate: 20
+      name: "High load phase"
+
+scenarios:
+  - name: "Assignment API load test on second host"
+    flow:
+      - get:
+          url: "/api/assignments"
+      - post:
+          url: "/api/assignments"
+          json:
+            title: "Load Test Assignment Host 4000"
+            course: "Software Testing"
+            description: "Created during Artillery load test on second host."
+            deadline: "2026-06-01"
+            status: "Published"
